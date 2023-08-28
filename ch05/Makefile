@@ -15,6 +15,7 @@ $(TARGET): $(USER_C) $(USER_SKEL)
 	clang \
 	    -target bpf \
         -D __TARGET_ARCH_$(ARCH) \
+				-I/usr/include/$(shell uname -m)-linux-gnu \
 	    -Wall \
 	    -O2 -g -o $@ -c $<
 	llvm-strip -g $@
